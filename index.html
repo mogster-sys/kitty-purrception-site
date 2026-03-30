@@ -1,240 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitty Purrception - See Through Cat Eyes</title>
-    <meta name="description" content="AI-powered AR app that simulates how cats see the world. Night vision, UV spectrum, prey detection, emotion sensing, and more.">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.7;
-            color: #1a1a2e;
-            background: #f8f9fa;
-        }
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white;
-            padding: 60px 24px;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 42px;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-        }
-        header .tagline {
-            font-size: 18px;
-            opacity: 0.85;
-            max-width: 500px;
-            margin: 0 auto 32px;
-        }
-        .badge-row {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.1);
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin: 32px 0;
-        }
-        .feature-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-        .feature-card h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: #1a1a2e;
-        }
-        .feature-card p {
-            font-size: 14px;
-            color: #555;
-        }
-        h2 {
-            color: #1a1a2e;
-            margin: 40px 0 20px;
-            font-size: 26px;
-            text-align: center;
-        }
-        .privacy-box {
-            background: #e8f5e9;
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-            margin: 32px 0;
-        }
-        .privacy-box h3 {
-            color: #2e7d32;
-            margin-bottom: 12px;
-        }
-        .privacy-box p {
-            color: #333;
-            font-size: 15px;
-        }
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 32px 0;
-            flex-wrap: wrap;
-        }
-        .links a {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-        }
-        .links a.primary {
-            background: #1a1a2e;
-            color: white;
-        }
-        .links a.secondary {
-            background: white;
-            color: #1a1a2e;
-            border: 1px solid #ddd;
-        }
-        footer {
-            text-align: center;
-            padding: 32px 24px;
-            color: #888;
-            font-size: 13px;
-            border-top: 1px solid #e8e8f0;
-            margin-top: 40px;
-        }
-        footer a { color: #888; margin: 0 12px; }
-        .nav-links {
-            text-align: center;
-            padding: 16px;
-            background: #fff;
-            border-bottom: 1px solid #e8e8f0;
-        }
-        .nav-links a { margin: 0 16px; text-decoration: none; font-size: 14px; color: #1565c0; }
-    </style>
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Kitty Purrception - AI Cat Vision Simulator</title>
+<meta name="description" content="AI-powered AR app that simulates how cats see the world. Night vision, UV spectrum, prey detection, emotion sensing, and 13 toggleable cat vision features.">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f8fafc; }
+    .tech-font { font-family: 'Orbitron', sans-serif; letter-spacing: 0.1em; }
+    .neon-text-green { text-shadow: 0 0 10px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.4); }
+    @keyframes pulse-slow { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+    .animate-pulse-slow { animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .accordion-content.open { max-height: 200px; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 </head>
-<body>
-    <header>
-        <h1>Kitty Purrception</h1>
-        <p class="tagline">AI-powered AR app that simulates how cats see the world. Based on real feline vision science.</p>
-        <div class="badge-row">
-            <span class="badge">13 Cat Vision Features</span>
-            <span class="badge">TensorFlow.js AI</span>
-            <span class="badge">100% On-Device</span>
-            <span class="badge">Zero Data Collection</span>
-        </div>
-    </header>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-service.html">Terms of Service</a>
-    </div>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
 
-    <div class="container">
-        <h2>3 Vision Modes</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>Night Vision</h3>
-                <p>Cats need 1/6th the light we do. See in the dark with 6x enhanced brightness and desaturated color.</p>
-            </div>
-            <div class="feature-card">
-                <h3>UV Spectrum</h3>
-                <p>Cats see ultraviolet light invisible to humans. Discover glowing patterns, fluorescent fabrics, and shimmering particles.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Predator Mode</h3>
-                <p>Everything not moving gets grayed out. Targets pop with high contrast, magnification, and motion trails.</p>
-            </div>
-        </div>
+<header class="relative w-full h-[45vh] md:h-[55vh] flex flex-col items-center justify-end overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Cat vision AR simulation" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKButxWAKuKCOeza01feUCzEOabd7JTb50eNlWogZwEEcwZfqZcyF3Y7iKZdmRE4PWDBqsiiJMK0PEJvQdReZjBCNq2i9xhvevkc8HMvBtm4z5UCtp487FjfCLKl71gSBE3Zzrl6JHg6A2MuWwVDj9eB0aclOW1_DvXH_3nI_PAJZjMuKfasDNTQOmuWVSBHQ9S_h8JezqCW24b4jyQk6ifVn5_AAbKEcL4_UlSZl-1JiKFb8f_8FUiKWtBEbAkOQ7ofkWF5WzIvF7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-[#020617]/40 via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-4 pb-6 w-full max-w-4xl mx-auto">
+<h1 class="tech-font text-3xl md:text-5xl font-bold uppercase tracking-widest text-white mb-2 neon-text-green">Kitty Purrception</h1>
+<p class="text-xs md:text-sm text-emerald-400 font-medium tracking-widest uppercase animate-pulse-slow">AI-Powered Feline Vision Simulator</p>
+</div>
+</header>
 
-        <h2>AI-Powered Features</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>Prey Detection</h3>
-                <p>AI identifies objects from a cat's perspective: prey, creatures, food, servants (humans), and territory.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Emotion Detection</h3>
-                <p>Reads facial expressions via 52 blendshapes to show how a cat perceives your emotional state.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Blood Flow Heatmap</h3>
-                <p>See skin color shift with emotion: cheeks flush when happy, temples heat when stressed.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Body Heat Signatures</h3>
-                <p>Full skeleton tracking with heat aura showing how cats sense warmth from living bodies.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Hand Tracking</h3>
-                <p>Detects wiggling fingers as irresistible prey targets. Cats can't resist moving hands!</p>
-            </div>
-            <div class="feature-card">
-                <h3>Depth Perception</h3>
-                <p>AI depth estimation simulates a cat's superior 3D spatial awareness.</p>
-            </div>
-        </div>
+<main class="flex-grow container mx-auto px-4 py-6 max-w-2xl">
 
-        <h2>Enhanced Cat Senses</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>Dichromatic Color</h3>
-                <p>Cats have no red cones. Reds become muted grayish-green while blues and greens are preserved.</p>
-            </div>
-            <div class="feature-card">
-                <h3>2x Temporal Processing</h3>
-                <p>Cats process motion twice as fast. Humans appear to move in slow motion with trailing afterimages.</p>
-            </div>
-            <div class="feature-card">
-                <h3>"The Stare"</h3>
-                <p>Reveals what cats see on blank walls: UV residue, micro-movements, particle drift, thermal prints.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Split-Screen Compare</h3>
-                <p>Drag a divider to compare human vision alongside cat vision. Same scene, different realities.</p>
-            </div>
-        </div>
+<!-- Vision Modes -->
+<h2 class="tech-font text-xs text-slate-500 uppercase tracking-widest mb-3 text-center">Vision Modes</h2>
+<div class="space-y-2 mb-6" id="modes-accordion">
+<div class="border border-emerald-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('night')" class="w-full flex items-center justify-between p-3 text-left hover:bg-emerald-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-emerald-500/10 rounded-md"><span class="text-emerald-400 text-sm">&#x1F319;</span></div>
+<h3 class="tech-font text-sm text-emerald-400">Night Vision</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-emerald-400 transition-transform" id="night-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="night"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-emerald-500/10 pt-2">Cats need only 1/6th the light humans do. 6x brightness enhancement with desaturated color, shadow pathway detection, and scanning overlays.</p></div>
+</div>
 
-        <div class="privacy-box">
-            <h3>100% Private</h3>
-            <p>All AI processing happens on YOUR device. Zero data collection. No analytics. No tracking. No accounts. Camera data never leaves your phone.</p>
-        </div>
+<div class="border border-purple-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('uv')" class="w-full flex items-center justify-between p-3 text-left hover:bg-purple-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-purple-500/10 rounded-md"><span class="text-purple-400 text-sm">&#x1F52E;</span></div>
+<h3 class="tech-font text-sm text-purple-400">UV Spectrum</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-purple-400 transition-transform" id="uv-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="uv"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-purple-500/10 pt-2">See ultraviolet light invisible to humans. Fluorescent fabrics, shimmering dust particles, glowing insect trails, and UV residue that lingers for hours.</p></div>
+</div>
 
-        <div class="links">
-            <a href="https://github.com/mogster-sys/feline-vision-ar" class="primary">View on GitHub</a>
-            <a href="privacy-policy.html" class="secondary">Privacy Policy</a>
-            <a href="terms-of-service.html" class="secondary">Terms of Service</a>
-        </div>
-    </div>
+<div class="border border-amber-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('predator')" class="w-full flex items-center justify-between p-3 text-left hover:bg-amber-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-amber-500/10 rounded-md"><span class="text-amber-400 text-sm">&#x1F3AF;</span></div>
+<h3 class="tech-font text-sm text-amber-500">Predator Mode</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-amber-500 transition-transform" id="predator-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="predator"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-amber-500/10 pt-2">Non-moving objects gray out. Targets pop with extreme contrast, magnification lens, motion trails, and slow-motion ghost frames.</p></div>
+</div>
+</div>
 
-    <footer>
-        <p>&copy; 2026 Three Eyed Emu. All rights reserved.</p>
-        <p>
-            <a href="https://github.com/mogster-sys/feline-vision-ar">GitHub</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-service.html">Terms of Service</a>
-        </p>
-    </footer>
-</body>
-</html>
+<!-- AI Features -->
+<h2 class="tech-font text-xs text-slate-500 uppercase tracking-widest mb-3 text-center">AI Detection (TensorFlow.js)</h2>
+<div class="space-y-2 mb-6">
+<div class="border border-red-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('prey')" class="w-full flex items-center justify-between p-3 text-left hover:bg-red-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-red-500/10 rounded-md"><span class="text-red-400 text-sm">&#x1F3AF;</span></div>
+<h3 class="tech-font text-sm text-red-400">Prey Detection</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-red-400 transition-transform" id="prey-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="prey"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-red-500/10 pt-2">COCO-SSD identifies 80+ objects and labels them from a cat's perspective: prey, creatures, food, servants (humans), and territory.</p></div>
+</div>
+
+<div class="border border-pink-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('emotion')" class="w-full flex items-center justify-between p-3 text-left hover:bg-pink-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-pink-500/10 rounded-md"><span class="text-pink-400 text-sm">&#x1F497;</span></div>
+<h3 class="tech-font text-sm text-pink-400">Emotion Detection</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-pink-400 transition-transform" id="emotion-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="emotion"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-pink-500/10 pt-2">Reads 52 facial blendshapes in real-time to detect happiness, surprise, anger, stress, and calm — with blood flow heatmap on skin.</p></div>
+</div>
+
+<div class="border border-orange-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('heat')" class="w-full flex items-center justify-between p-3 text-left hover:bg-orange-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-orange-500/10 rounded-md"><span class="text-orange-400 text-sm">&#x1F525;</span></div>
+<h3 class="tech-font text-sm text-orange-400">Body Heat Signature</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-orange-400 transition-transform" id="heat-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="heat"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-orange-500/10 pt-2">MoveNet skeleton tracking with pulsing heat aura. Full body warmth visualization — impossible to hide from a cat's thermal awareness.</p></div>
+</div>
+
+<div class="border border-violet-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('hands')" class="w-full flex items-center justify-between p-3 text-left hover:bg-violet-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-violet-500/10 rounded-md"><span class="text-violet-400 text-sm">&#x1F43E;</span></div>
+<h3 class="tech-font text-sm text-violet-400">Hand Tracking</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-violet-400 transition-transform" id="hands-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="hands"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-violet-500/10 pt-2">MediaPipe hand detection with finger wiggle alerts. Nothing triggers a cat's prey drive like moving fingers!</p></div>
+</div>
+
+<div class="border border-sky-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('depth')" class="w-full flex items-center justify-between p-3 text-left hover:bg-sky-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-sky-500/10 rounded-md"><span class="text-sky-400 text-sm">&#x1F32B;</span></div>
+<h3 class="tech-font text-sm text-sky-400">Depth Perception</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-sky-400 transition-transform" id="depth-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="depth"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-sky-500/10 pt-2">MiDaS depth estimation renders atmospheric fog per mode. A 6-foot leap is just a simple calculation for a cat.</p></div>
+</div>
+</div>
+
+<!-- Enhanced Senses -->
+<h2 class="tech-font text-xs text-slate-500 uppercase tracking-widest mb-3 text-center">Enhanced Cat Senses</h2>
+<div class="space-y-2 mb-8">
+<div class="border border-lime-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('color')" class="w-full flex items-center justify-between p-3 text-left hover:bg-lime-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-lime-500/10 rounded-md"><span class="text-lime-400 text-sm">&#x1F3A8;</span></div>
+<h3 class="tech-font text-sm text-lime-400">Dichromatic Color</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-lime-400 transition-transform" id="color-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="color"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-lime-500/10 pt-2">Cats have no red cones. Your red shirt looks muted grayish-green. Scientific blue/green-only color remapping.</p></div>
+</div>
+
+<div class="border border-yellow-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('tempo')" class="w-full flex items-center justify-between p-3 text-left hover:bg-yellow-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-yellow-500/10 rounded-md"><span class="text-yellow-400 text-sm">&#x23F1;</span></div>
+<h3 class="tech-font text-sm text-yellow-400">2x Temporal Processing</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-yellow-400 transition-transform" id="tempo-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="tempo"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-yellow-500/10 pt-2">Cats process motion twice as fast as humans. You appear to move in slow motion with trailing afterimages.</p></div>
+</div>
+
+<div class="border border-teal-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('stare')" class="w-full flex items-center justify-between p-3 text-left hover:bg-teal-500/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-teal-500/10 rounded-md"><span class="text-teal-400 text-sm">&#x1F440;</span></div>
+<h3 class="tech-font text-sm text-teal-400">"The Stare"</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-teal-400 transition-transform" id="stare-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="stare"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-teal-500/10 pt-2">Why do cats stare at blank walls? They see UV residue, micro-movements, particle drift, insect trails, and thermal prints.</p></div>
+</div>
+
+<div class="border border-slate-400/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+<button onclick="toggleAccordion('split')" class="w-full flex items-center justify-between p-3 text-left hover:bg-slate-400/5 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-7 h-7 flex items-center justify-center bg-slate-400/10 rounded-md"><span class="text-slate-300 text-sm">&#x2194;</span></div>
+<h3 class="tech-font text-sm text-slate-300">Split-Screen Compare</h3>
+</div>
+<span class="material-symbols-outlined text-sm text-slate-300 transition-transform" id="split-chevron">expand_more</span>
+</button>
+<div class="accordion-content px-3 pb-3" id="split"><p class="text-slate-400 text-[11px] leading-relaxed border-t border-slate-400/10 pt-2">Drag a divider to compare human vision alongside cat vision. Same scene, two completely different realities.</p></div>
+</div>
+</div>
+
+<!-- Privacy -->
+<div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4 mb-6 text-center">
+<p class="tech-font text-xs text-emerald-400 mb-1">100% Private</p>
+<p class="text-slate-400 text-[11px]">All AI processing on YOUR device. Zero data collection. No analytics. No tracking. No accounts.</p>
+</div>
+
+<!-- Badges -->
+<div class="flex justify-center space-x-3 mb-6">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">v1.0.0</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-medium bg-purple-500/10 text-purple-400 border border-purple-500/30">13 FEATURES</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-medium bg-amber-500/10 text-amber-400 border border-amber-500/30">TENSORFLOW.JS</span>
+</div>
+
+</main>
+
+<footer class="mt-auto py-4 border-t border-slate-800 text-center text-slate-500 text-[10px] px-4">
+<div class="max-w-4xl mx-auto flex flex-col items-center gap-2">
+<div class="flex space-x-4">
+<a class="hover:text-emerald-400 transition-colors" href="privacy-policy.html">Privacy Policy</a>
+<a class="hover:text-purple-400 transition-colors" href="terms-of-service.html">Terms of Service</a>
+<a class="hover:text-amber-400 transition-colors" href="https://github.com/mogster-sys/feline-vision-ar">GitHub</a>
+</div>
+<p class="opacity-50">&copy; 2026 Three Eyed Emu</p>
+</div>
+</footer>
+
+<script>
+function toggleAccordion(id) {
+    const content = document.getElementById(id);
+    const chevron = document.getElementById(id + '-chevron');
+    const isOpen = content.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('open'));
+    document.querySelectorAll('[id$="-chevron"]').forEach(el => el.style.transform = '');
+    // Open clicked if it was closed
+    if (!isOpen) {
+        content.classList.add('open');
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
+</body></html>

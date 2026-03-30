@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Kitty Purrception</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            color: #1a1a2e;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 40px 24px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        header p {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+        h2 {
+            color: #1a1a2e;
+            margin: 32px 0 16px;
+            font-size: 22px;
+            border-bottom: 2px solid #e8e8f0;
+            padding-bottom: 8px;
+        }
+        h3 {
+            color: #16213e;
+            margin: 20px 0 10px;
+            font-size: 17px;
+        }
+        p, li {
+            margin-bottom: 12px;
+            color: #333;
+        }
+        ul {
+            padding-left: 24px;
+        }
+        .highlight {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight strong {
+            color: #2e7d32;
+        }
+        a {
+            color: #1565c0;
+        }
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            color: #888;
+            font-size: 13px;
+            border-top: 1px solid #e8e8f0;
+            margin-top: 40px;
+        }
+        footer a {
+            color: #888;
+        }
+        .nav-links {
+            text-align: center;
+            padding: 16px;
+            background: #fff;
+            border-bottom: 1px solid #e8e8f0;
+        }
+        .nav-links a {
+            margin: 0 16px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kitty Purrception</h1>
+        <p>Privacy Policy</p>
+    </header>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+    </div>
+    <div class="container">
+        <p><strong>Last Updated: March 31, 2026</strong></p>
+
+        <h2>Introduction</h2>
+        <p>This Privacy Policy describes how Kitty Purrception ("we", "our", or "the app") handles your information when you use our mobile application.</p>
+
+        <div class="highlight">
+            <strong>Key Point:</strong> Kitty Purrception processes everything on your device. We collect zero personal data. No accounts, no analytics, no tracking.
+        </div>
+
+        <h2>Information We Collect</h2>
+
+        <h3>Camera Access</h3>
+        <ul>
+            <li><strong>Purpose:</strong> Kitty Purrception requires access to your device's camera to provide real-time AR vision simulation features.</li>
+            <li><strong>Data Processing:</strong> All camera data is processed locally on your device in real-time. We do not store, transmit, or upload camera feeds to any servers.</li>
+            <li><strong>Your Control:</strong> You can revoke camera permissions at any time through your device settings.</li>
+        </ul>
+
+        <h3>Photo Library Access</h3>
+        <ul>
+            <li><strong>Purpose:</strong> We request photo library access only when you choose to save screenshots of the cat vision experience.</li>
+            <li><strong>Data Storage:</strong> Screenshots are saved directly to your device's local storage and photo library. We do not access, upload, or transmit these images.</li>
+            <li><strong>Your Control:</strong> You can deny photo library permissions and still use the app's camera features.</li>
+        </ul>
+
+        <h3>Face Detection &amp; Expression Analysis</h3>
+        <ul>
+            <li><strong>Purpose:</strong> Our app uses on-device face detection to enhance visual effects (such as eye glow, emotional state detection, and blood flow heatmap overlays).</li>
+            <li><strong>Data Processing:</strong> Face detection and expression analysis (via MediaPipe FaceLandmarker blendshapes) are performed entirely on your device. No facial recognition data, expression data, or biometric data is collected, stored, or transmitted.</li>
+            <li><strong>Technology:</strong> Google MediaPipe Tasks Vision for local face landmark detection (478 landmarks + iris tracking + 52 expression blendshapes).</li>
+        </ul>
+
+        <h3>AI Object, Pose &amp; Hand Detection</h3>
+        <ul>
+            <li><strong>Purpose:</strong> The app uses on-device AI models for object detection, body pose estimation, and hand tracking.</li>
+            <li><strong>Data Processing:</strong> All AI inference runs entirely on your device using TensorFlow.js. Models are downloaded once and cached locally. No images, detection results, or model outputs are transmitted to any server.</li>
+            <li><strong>Technology:</strong> TensorFlow.js with pre-trained models (COCO-SSD, MoveNet, MediaPipe Hands) running via WebGL acceleration.</li>
+        </ul>
+
+        <h3>Depth Estimation</h3>
+        <ul>
+            <li><strong>Purpose:</strong> The app estimates scene depth to simulate a cat's depth perception.</li>
+            <li><strong>Data Processing:</strong> Depth estimation runs on-device. No depth data is collected or transmitted.</li>
+        </ul>
+
+        <h2>Data We Do NOT Collect</h2>
+        <p>Kitty Purrception does <strong>NOT</strong> collect:</p>
+        <ul>
+            <li>Personal information (name, email, phone number)</li>
+            <li>Location data</li>
+            <li>Device identifiers</li>
+            <li>Usage analytics or tracking data</li>
+            <li>Camera images or video recordings</li>
+            <li>Facial recognition or biometric data</li>
+            <li>AI detection results or model outputs</li>
+            <li>Any data that leaves your device</li>
+        </ul>
+
+        <h2>Third-Party Services</h2>
+
+        <h3>MediaPipe (Google)</h3>
+        <ul>
+            <li><strong>Purpose:</strong> On-device face landmark detection and hand pose detection</li>
+            <li><strong>Processing:</strong> All processing occurs locally on your device</li>
+            <li><strong>Model Download:</strong> Model files are downloaded from Google's CDN on first use and cached locally</li>
+            <li><strong>Privacy Policy:</strong> <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+        </ul>
+
+        <h3>TensorFlow.js (Google)</h3>
+        <ul>
+            <li><strong>Purpose:</strong> On-device object detection, pose estimation, and depth estimation</li>
+            <li><strong>Processing:</strong> All inference occurs locally on your device</li>
+            <li><strong>Model Download:</strong> Model files are downloaded from Google's CDN/TFHub on first use and cached locally</li>
+            <li><strong>Privacy Policy:</strong> <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+        </ul>
+
+        <h2>Data Security</h2>
+        <ul>
+            <li>All camera and AI processing occurs on your device</li>
+            <li>No data is transmitted to external servers during normal app operation</li>
+            <li>Screenshots are stored locally with your device's security protections</li>
+            <li>AI model files are cached locally after initial download</li>
+        </ul>
+
+        <h2>Children's Privacy</h2>
+        <p>Kitty Purrception does not knowingly collect any personal information from children. The app is designed to be safe for all ages, with no data collection or transmission. The app does not contain ads, in-app purchases, or social features.</p>
+
+        <h2>Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+            <li>Use the app without providing camera or photo library access (limited functionality)</li>
+            <li>Revoke permissions at any time through device settings</li>
+            <li>Delete the app and all associated data (including cached AI models) by uninstalling it</li>
+        </ul>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify users of any material changes by updating the "Last Updated" date.</p>
+
+        <h2>Data Retention</h2>
+        <p>Since we do not collect or store user data, there is no data retention policy. All processing is ephemeral and occurs in real-time on your device. AI models are cached locally and removed when you uninstall the app.</p>
+
+        <h2>Contact Information</h2>
+        <p>For questions or concerns about this Privacy Policy, please contact:</p>
+        <ul>
+            <li>GitHub: <a href="https://github.com/mogster-sys/feline-vision-ar">github.com/mogster-sys/feline-vision-ar</a></li>
+        </ul>
+
+        <h2>Compliance</h2>
+        <p>This app complies with:</p>
+        <ul>
+            <li>Apple App Store Review Guidelines</li>
+            <li>Google Play Store Policies</li>
+            <li>General Data Protection Regulation (GDPR) principles</li>
+            <li>California Consumer Privacy Act (CCPA) principles</li>
+        </ul>
+        <p>By using Kitty Purrception, you agree to this Privacy Policy.</p>
+    </div>
+    <footer>
+        <p>&copy; 2026 Kitty Purrception. All rights reserved.</p>
+        <p><a href="https://github.com/mogster-sys/feline-vision-ar">GitHub</a></p>
+    </footer>
+</body>
+</html>
